@@ -2,14 +2,24 @@
 
 import Link from "next/link";
 import { Menu } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const pathname = usePathname();
+
+  const navItems = [
+    { label: "About", href: "/about" },
+    { label: "Services", href: "/services" },
+    { label: "Projects", href: "/projects" },
+    { label: "Technologies", href: "/technologies" },
+  ];
+
   return (
     <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-lg border-b border-slate-200/60">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
+        <Link href="/" className="flex items-center gap-3">
           <div className="relative w-50 h-10 flex items-center justify-center">
             <img src="/logo/vertexias.png" alt="vertexias" />
           </div>
@@ -17,43 +27,33 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
-          <Link
-            href="/home"
-            className="text-slate-900 font-medium hover:text-cyan-600 transition-colors"
-          >
-            Home
-          </Link>
+          {navItems.map((item) => {
+            const active = pathname.startsWith(item.href);
 
-          <Link
-            href="/about"
-            className="text-slate-500 hover:text-cyan-600 transition-colors"
-          >
-            About
-          </Link>
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`relative group font-medium transition-colors ${
+                  active
+                    ? "text-cyan-600"
+                    : "text-slate-500 hover:text-cyan-600"
+                }`}
+              >
+                {item.label}
 
-          <Link
-            href="/services"
-            className="text-slate-500 hover:text-cyan-600 transition-colors"
-          >
-            Services
-          </Link>
-
-          <Link
-            href="/projects"
-            className="text-slate-500 hover:text-cyan-600 transition-colors"
-          >
-            Projects
-          </Link>
-
-          <Link
-            href="/technologies"
-            className="text-slate-500 hover:text-cyan-600 transition-colors"
-          >
-            Technologies
-          </Link>
+                {/* Animated underline */}
+                <span
+                  className={`absolute left-0 -bottom-1 h-[2px] w-full bg-cyan-600 origin-left transition-transform duration-300 ${
+                    active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                  }`}
+                />
+              </Link>
+            );
+          })}
         </div>
 
-        {/* CTA Button */}
+        {/* CTA */}
         <div className="hidden md:flex">
           <Link
             href="/contact"
@@ -63,10 +63,11 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile */}
         <button className="md:hidden text-slate-600">
           <Menu />
         </button>
+
       </div>
     </nav>
   );

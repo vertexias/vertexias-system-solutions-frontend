@@ -1,5 +1,6 @@
 "use client";
 
+import { StaggerContainer, StaggerItem } from "@/components/animation/Stagger";
 import ProjectCard from "./ProjectCard";
 
 export default function ProjectsGrid() {
@@ -13,15 +14,15 @@ export default function ProjectsGrid() {
       image: "/projects/eduwave.png",
     },
     {
-      title: "eSports Tournament Management System",
+      title: "EsportsHub - E-sports Tournament Management System",
       description:
         "A SaaS platform designed to organize and manage online and offline eSports tournaments including player registration, team management, match scheduling, bracket automation, and real-time result tracking.",
       tags: ["React", ".NET Core", "PostgreSQL", "EF Core"],
       status: "Ongoing",
-      image: "/projects/game.webp",
+      image: "/projects/esports.png",
     },
     {
-      title: "E-commerce System Web Application",
+      title: "Velora - E-commerce System Web Application",
       description:
         "A full-featured e-commerce platform with product catalog, shopping cart, order processing, payment integration, and admin dashboard for inventory and user management.",
       tags: ["PHP", "Apache", "Bootstrap 5", "JavaScript"],
@@ -29,7 +30,7 @@ export default function ProjectsGrid() {
       image: "/projects/ecommerce.png",
     },
     {
-      title: "Pharmacy Management Desktop Application",
+      title: "Surgeon - Pharmacy Management Desktop Application",
       description:
         "A desktop-based pharmacy management system including inventory management, billing, sales tracking, purchase orders, user roles, and reporting tools.",
       tags: ["C#", ".NET Framework", "SQL Server", "WinForms"],
@@ -40,12 +41,14 @@ export default function ProjectsGrid() {
 
   return (
     <section className="py-24">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div className="mx-auto max-w-7xl px-6">
+        <StaggerContainer className="grid grid-cols-1 gap-12 md:grid-cols-2">
           {projects.map((project, index) => (
-            <ProjectCard key={index} {...project} />
+            <StaggerItem key={index}>
+              <ProjectCard {...project} />
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );
