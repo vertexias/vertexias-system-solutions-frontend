@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { CheckCircle2 } from "lucide-react";
 import HeroMotion from "./HeroMotion";
+
 
 export default function Hero() {
   return (
@@ -26,27 +28,27 @@ export default function Hero() {
             className="mb-8 inline-flex items-center gap-2 rounded-full border border-cyan-100 bg-cyan-50 px-4 py-1.5 text-sm font-medium text-cyan-700"
           >
             <span className="h-2 w-2 rounded-full bg-cyan-500 animate-pulse" />
-            Next-Generation Enterprise Software
+            Business-Focused Software Engineering
           </div>
 
           <h1
             data-hero-title
-            className="mx-auto mb-8 max-w-5xl text-6xl font-semibold leading-tight tracking-tight text-slate-900 md:text-7xl"
+            className="mx-auto mb-8 max-w-5xl text-5xl font-semibold leading-tight tracking-tight text-slate-900 md:text-7xl"
           >
             Engineering{" "}
             <span className="bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent">
-              Intelligent
+              intelligent
             </span>{" "}
-            Software Solutions for the Future
+            software solutions that help businesses scale
           </h1>
 
           <p
             data-hero-text
-            className="mx-auto mb-12 max-w-2xl text-xl text-slate-600"
+            className="mx-auto mb-10 max-w-3xl text-lg leading-8 text-slate-600 md:text-xl"
           >
-            Vertexias partners with industry leaders to build scalable,
-            high-performance web and mobile applications, SaaS platforms,
-            and enterprise AI systems.
+            Vertexias builds web applications, mobile apps, SaaS platforms, enterprise
+            systems, desktop software, and AI-enabled products with a strong focus on
+            usability, scalability, and long-term product value.
           </p>
 
           <div
